@@ -44,7 +44,6 @@ import useAddressQuery from 'ui/address/utils/useAddressQuery';
 import useCheckAddressFormat from 'ui/address/utils/useCheckAddressFormat';
 import useCheckDomainNameParam from 'ui/address/utils/useCheckDomainNameParam';
 import AccountActionsMenu from 'ui/shared/AccountActionsMenu/AccountActionsMenu';
-import TextAd from 'ui/shared/ad/TextAd';
 import AddressAddToWallet from 'ui/shared/address/AddressAddToWallet';
 import AddressEntity from 'ui/shared/entities/address/AddressEntity';
 import EnsEntity from 'ui/shared/entities/ens/EnsEntity';
@@ -122,10 +121,10 @@ const AddressPageContent = () => {
 
   const isLoading = addressQuery.isPlaceholderData;
   const isTabsLoading =
-    isLoading ||
-    addressTabsCountersQuery.isPlaceholderData ||
-    (config.features.userOps.isEnabled && userOpsAccountQuery.isPlaceholderData) ||
-    (config.features.mudFramework.isEnabled && mudTablesCountQuery.isPlaceholderData);
+                isLoading ||
+                addressTabsCountersQuery.isPlaceholderData ||
+                (config.features.userOps.isEnabled && userOpsAccountQuery.isPlaceholderData) ||
+                (config.features.mudFramework.isEnabled && mudTablesCountQuery.isPlaceholderData);
 
   const handleFetchedBytecodeMessage = React.useCallback(() => {
     addressQuery.refetch();
@@ -301,7 +300,7 @@ const AddressPageContent = () => {
         { slug: 'mud', name: 'MUD World', tagType: 'custom' as const, ordinal: PREDEFINED_TAG_PRIORITY } :
         undefined,
       ...formatUserTags(addressQuery.data),
-      ...(addressMetadataQuery.data?.addresses?.[hash.toLowerCase()]?.tags.filter(tag => tag.tagType !== 'note') || []),
+      ...(addressMetadataQuery.data?.addresses?.[ hash.toLowerCase() ]?.tags.filter(tag => tag.tagType !== 'note') || []),
       !addressQuery.data?.is_contract && xScoreFeature.isEnabled && xStarQuery.data?.data.level ?
         {
           slug: 'xstar',
@@ -311,7 +310,7 @@ const AddressPageContent = () => {
           meta: {
             tooltipTitle: 'XStar humanity levels',
             tooltipDescription:
-              'XStar looks for off-chain information about an address and interpret it as a XHS score. Different score means different humanity levels.',
+                                                        'XStar looks for off-chain information about an address and interpret it as a XHS score. Different score means different humanity levels.',
             tooltipUrl: xScoreFeature.url,
           },
         } :
@@ -333,10 +332,10 @@ const AddressPageContent = () => {
       tags={ tags }
       isLoading={
         isLoading ||
-        (config.features.userOps.isEnabled && userOpsAccountQuery.isPlaceholderData) ||
-        (config.features.addressMetadata.isEnabled && addressMetadataQuery.isPending) ||
-        (addressProfileAPIFeature.isEnabled && userPropfileApiQuery.isPending) ||
-        (xScoreFeature.isEnabled && xStarQuery.isPlaceholderData)
+                                (config.features.userOps.isEnabled && userOpsAccountQuery.isPlaceholderData) ||
+                                (config.features.addressMetadata.isEnabled && addressMetadataQuery.isPending) ||
+                                (addressProfileAPIFeature.isEnabled && userPropfileApiQuery.isPending) ||
+                                (xScoreFeature.isEnabled && xStarQuery.isPlaceholderData)
       }
     />
   );
@@ -398,7 +397,7 @@ const AddressPageContent = () => {
         mr={ 4 }
       />
       { !isLoading && addressQuery.data?.is_contract && addressQuery.data.token &&
-        <AddressAddToWallet token={ addressQuery.data.token } variant="button"/> }
+                                <AddressAddToWallet token={ addressQuery.data.token } variant="button"/> }
       { !isLoading && !addressQuery.data?.is_contract && config.features.account.isEnabled && (
         <AddressFavoriteButton hash={ hash } watchListId={ addressQuery.data?.watchlist_address_id }/>
       ) }
@@ -406,16 +405,15 @@ const AddressPageContent = () => {
       <AccountActionsMenu isLoading={ isLoading }/>
       <HStack ml="auto" gap={ 2 }/>
       { !isLoading && addressQuery.data?.is_contract && addressQuery.data?.is_verified && config.UI.views.address.solidityscanEnabled &&
-        <SolidityscanReport hash={ hash }/> }
+                                <SolidityscanReport hash={ hash }/> }
       { !isLoading && addressEnsDomainsQuery.data && config.features.nameService.isEnabled &&
-        <AddressEnsDomains query={ addressEnsDomainsQuery } addressHash={ hash } mainDomainName={ addressQuery.data?.ens_domain_name }/> }
+                                <AddressEnsDomains query={ addressEnsDomainsQuery } addressHash={ hash } mainDomainName={ addressQuery.data?.ens_domain_name }/> }
       <NetworkExplorers type="address" pathParam={ hash.toLowerCase() }/>
     </Flex>
   );
 
   return (
     <>
-      <TextAd mb={ 6 }/>
       <PageTitle
         title={ `${ addressQuery.data?.is_contract ? 'Contract' : 'Address' } details` }
         backLink={ backLink }
@@ -424,7 +422,7 @@ const AddressPageContent = () => {
         isLoading={ isLoading }
       />
       { !addressMetadataQuery.isPending &&
-        <AddressMetadataAlert tags={ addressMetadataQuery.data?.addresses?.[hash.toLowerCase()]?.tags } mt="-4px" mb={ 6 }/> }
+                                <AddressMetadataAlert tags={ addressMetadataQuery.data?.addresses?.[ hash.toLowerCase() ]?.tags } mt="-4px" mb={ 6 }/> }
       { config.features.metasuites.isEnabled && <Box display="none" id="meta-suites__address" data-ready={ !isLoading }/> }
       <AddressDetails addressQuery={ addressQuery } scrollRef={ tabsScrollRef }/>
       { /* should stay before tabs to scroll up with pagination */ }

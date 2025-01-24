@@ -6,8 +6,7 @@ import { test, expect } from 'playwright/lib';
 
 import VerifiedContracts from './VerifiedContracts';
 
-test('base view +@mobile', async({ render, mockTextAd, mockApiResponse }) => {
-  await mockTextAd();
+test('base view +@mobile', async({ render, mockApiResponse }) => {
   await mockApiResponse('verified_contracts', verifiedContractsMock.baseResponse);
   await mockApiResponse('verified_contracts_counters', verifiedContractsCountersMock);
   const component = await render(<VerifiedContracts/>);

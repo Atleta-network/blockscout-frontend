@@ -13,9 +13,8 @@ const hooksConfig = {
   },
 };
 
-test.beforeEach(async({ mockTextAd, mockEnvs }) => {
+test.beforeEach(async({ mockEnvs }) => {
   await mockEnvs(ENVS_MAP.arbitrumRollup);
-  await mockTextAd();
 });
 
 test('base view', async({ render, mockApiResponse }) => {
@@ -32,7 +31,7 @@ test('with anytrust DA', async({ render, mockApiResponse }) => {
 });
 
 test.describe('mobile', () => {
-  test.use({ viewport: devices['iPhone 13 Pro'].viewport });
+  test.use({ viewport: devices[ 'iPhone 13 Pro' ].viewport });
   test('base view', async({ render, mockApiResponse }) => {
     await mockApiResponse('arbitrum_l2_txn_batch', batchData, { pathParams: { number: batchNumber } });
     const component = await render(<ArbitrumL2TxnBatch/>, { hooksConfig });

@@ -24,7 +24,6 @@ import AddressContract from 'ui/address/AddressContract';
 import AddressCsvExportLink from 'ui/address/AddressCsvExportLink';
 import useContractTabs from 'ui/address/contract/useContractTabs';
 import { CONTRACT_TAB_IDS } from 'ui/address/contract/utils';
-import TextAd from 'ui/shared/ad/TextAd';
 import IconSvg from 'ui/shared/IconSvg';
 import Pagination from 'ui/shared/pagination/Pagination';
 import useQueryWithPages from 'ui/shared/pagination/useQueryWithPages';
@@ -78,7 +77,7 @@ const TokenPageContent = () => {
     }
   }, [ tokenQuery.data, totalSupplySocket, hashString, queryClient ]);
 
-  const handleTotalSupplyMessage: SocketMessage.TokenTotalSupply['handler'] = React.useCallback((payload) => {
+  const handleTotalSupplyMessage: SocketMessage.TokenTotalSupply[ 'handler' ] = React.useCallback((payload) => {
     const prevData = queryClient.getQueryData(getResourceKey('token', { pathParams: { hash: hashString } }));
     if (!prevData) {
       setTotalSupplySocket(payload.total_supply);
@@ -120,11 +119,11 @@ const TokenPageContent = () => {
     options: {
       enabled: Boolean(
         hasData &&
-        hashString &&
-        (
-          (!hasInventoryTab && !tab) ||
-          tab === 'token_transfers'
-        ),
+                                hashString &&
+                                (
+                                  (!hasInventoryTab && !tab) ||
+                                        tab === 'token_transfers'
+                                ),
       ),
       placeholderData: tokenStubs.getTokenTransfersStub(tokenQuery.data?.type),
     },
@@ -138,11 +137,11 @@ const TokenPageContent = () => {
     options: {
       enabled: Boolean(
         hasData &&
-        hashString &&
-        (
-          (hasInventoryTab && !tab) ||
-          tab === 'inventory'
-        ),
+                                hashString &&
+                                (
+                                  (hasInventoryTab && !tab) ||
+                                        tab === 'inventory'
+                                ),
       ),
       placeholderData: generateListStub<'token_inventory'>(tokenStubs.TOKEN_INSTANCE, 50, { next_page_params: { unique_token: 1 } }),
     },
@@ -246,8 +245,6 @@ const TokenPageContent = () => {
 
   return (
     <>
-      <TextAd mb={ 6 }/>
-
       <TokenPageTitle tokenQuery={ tokenQuery } addressQuery={ addressQuery } hash={ hashString }/>
 
       <TokenDetails tokenQuery={ tokenQuery }/>

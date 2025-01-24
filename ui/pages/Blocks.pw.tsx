@@ -19,10 +19,6 @@ const hooksConfig = {
 // test cases which use socket cannot run in parallel since the socket server always run on the same port
 test.describe.configure({ mode: 'serial' });
 
-test.beforeEach(async({ mockTextAd }) => {
-  await mockTextAd();
-});
-
 test('base view +@dark-mode', async({ render, mockApiResponse }) => {
   await mockApiResponse('blocks', blockMock.baseListResponse, { queryParams: { type: 'block' } });
   await mockApiResponse('stats', statsMock.base);
@@ -43,7 +39,7 @@ test('hidden fields', async({ render, mockApiResponse, mockEnvs }) => {
 });
 
 test.describe('mobile', () => {
-  test.use({ viewport: devices['iPhone 13 Pro'].viewport });
+  test.use({ viewport: devices[ 'iPhone 13 Pro' ].viewport });
 
   test('base view', async({ render, mockApiResponse }) => {
     await mockApiResponse('blocks', blockMock.baseListResponse, { queryParams: { type: 'block' } });

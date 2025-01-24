@@ -10,7 +10,6 @@ import * as mockContractReadResponse from './fixtures/mockContractReadResponse';
 import * as mockEnvs from './fixtures/mockEnvs';
 import * as mockFeatures from './fixtures/mockFeatures';
 import * as mockRpcResponse from './fixtures/mockRpcResponse';
-import * as mockTextAd from './fixtures/mockTextAd';
 import * as render from './fixtures/render';
 import * as socketServer from './fixtures/socketServer';
 
@@ -25,7 +24,6 @@ export interface Fixtures {
   mockRpcResponse: mockRpcResponse.MockRpcResponseFixture;
   createSocket: socketServer.CreateSocketFixture;
   injectMetaMaskProvider: injectMetaMaskProvider.InjectMetaMaskProvider;
-  mockTextAd: mockTextAd.MockTextAdFixture;
 }
 
 export type TestFnArgs = Fixtures & { page: Page };
@@ -39,15 +37,11 @@ const test = base.extend<Fixtures>({
   mockEnvs: mockEnvs.default,
   mockFeatures: mockFeatures.default,
   mockRpcResponse: mockRpcResponse.default,
-  // FIXME: for some reason Playwright does not intercept requests to text ad provider when running multiple tests in parallel
-  // even if we have a global request interceptor (maybe it is related to service worker issue, maybe not)
-  // so we have to inject mockTextAd fixture in each test and mock the response where it is needed
-  mockTextAd: mockTextAd.default,
   createSocket: socketServer.createSocket,
   injectMetaMaskProvider: injectMetaMaskProvider.default,
 });
 
-test.beforeEach(async({ page, mockTextAd }) => {
+test.beforeEach(async({ page }) => {
   // debug
   const isDebug = process.env.PWDEBUG === '1';
 
@@ -67,9 +61,6 @@ test.beforeEach(async({ page, mockTextAd }) => {
     }
   });
 
-  // with few exceptions:
-  //  1. mock text AD requests
-  await mockTextAd();
 });
 
 export * from '@playwright/experimental-ct-react';

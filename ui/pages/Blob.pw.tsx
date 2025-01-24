@@ -12,10 +12,6 @@ const hooksConfig = {
   },
 };
 
-test.beforeEach(async({ mockTextAd }) => {
-  await mockTextAd();
-});
-
 test('base view +@mobile +@dark-mode', async({ render, mockApiResponse, page }) => {
   await mockApiResponse('blob', blobsMock.base1, { pathParams: { hash: blobsMock.base1.hash } });
   const component = await render(<Blob/>, { hooksConfig });

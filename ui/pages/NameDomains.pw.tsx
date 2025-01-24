@@ -6,8 +6,7 @@ import { test, expect } from 'playwright/lib';
 
 import NameDomains from './NameDomains';
 
-test.beforeEach(async({ mockApiResponse, mockAssetResponse, mockTextAd }) => {
-  await mockTextAd();
+test.beforeEach(async({ mockApiResponse, mockAssetResponse }) => {
   await mockAssetResponse(ensDomainMock.protocolA.icon_url as string, './playwright/mocks/image_s.jpg');
   await mockAssetResponse(ensDomainMock.protocolB.icon_url as string, './playwright/mocks/image_md.jpg');
   await mockApiResponse('domains_lookup', {

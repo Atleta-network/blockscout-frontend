@@ -6,8 +6,7 @@ import { test, expect, devices } from 'playwright/lib';
 
 import Pools from './Pools';
 
-test('base view +@dark-mode', async({ render, mockApiResponse, mockTextAd, mockAssetResponse }) => {
-  await mockTextAd();
+test('base view +@dark-mode', async({ render, mockApiResponse, mockAssetResponse }) => {
   await mockApiResponse(
     'pools',
     { items: [ poolMock.base, poolMock.noIcons, poolMock.base ], next_page_params: null },
@@ -20,10 +19,9 @@ test('base view +@dark-mode', async({ render, mockApiResponse, mockTextAd, mockA
 });
 
 test.describe('mobile', () => {
-  test.use({ viewport: devices['iPhone 13 Pro'].viewport });
+  test.use({ viewport: devices[ 'iPhone 13 Pro' ].viewport });
 
-  test('base view', async({ render, mockApiResponse, mockTextAd, mockAssetResponse }) => {
-    await mockTextAd();
+  test('base view', async({ render, mockApiResponse, mockAssetResponse }) => {
     await mockApiResponse(
       'pools',
       { items: [ poolMock.base, poolMock.noIcons, poolMock.base ], next_page_params: null },

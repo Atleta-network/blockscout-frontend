@@ -7,8 +7,7 @@ import { test, expect } from 'playwright/lib';
 
 import SearchBar from './SearchBar';
 
-test.beforeEach(async({ mockAssetResponse, mockEnvs, mockTextAd }) => {
-  await mockTextAd();
+test.beforeEach(async({ mockAssetResponse, mockEnvs }) => {
   await mockAssetResponse(searchMock.token1.icon_url as string, './playwright/mocks/image_s.jpg');
   await mockEnvs([
     [ 'NEXT_PUBLIC_MARKETPLACE_ENABLED', 'false' ],
@@ -207,8 +206,8 @@ test.describe('with apps', () => {
       searchMock.token1,
     ], { queryParams: { q: 'o' } });
     await mockConfigResponse('NEXT_PUBLIC_MARKETPLACE_CONFIG_URL', MARKETPLACE_CONFIG_URL, appsMock);
-    await mockAssetResponse(appsMock[0].logo, './playwright/mocks/image_s.jpg');
-    await mockAssetResponse(appsMock[1].logo, './playwright/mocks/image_s.jpg');
+    await mockAssetResponse(appsMock[ 0 ].logo, './playwright/mocks/image_s.jpg');
+    await mockAssetResponse(appsMock[ 1 ].logo, './playwright/mocks/image_s.jpg');
 
     await render(<SearchBar/>);
     await page.getByPlaceholder(/search/i).fill('o');

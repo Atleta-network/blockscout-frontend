@@ -16,7 +16,6 @@ import {
   getTokenInstanceTransfersStub,
   getTokenInstanceHoldersStub,
 } from 'stubs/token';
-import TextAd from 'ui/shared/ad/TextAd';
 import Pagination from 'ui/shared/pagination/Pagination';
 import useQueryWithPages from 'ui/shared/pagination/useQueryWithPages';
 import RoutedTabs from 'ui/shared/Tabs/RoutedTabs';
@@ -67,10 +66,10 @@ const TokenInstanceContent = () => {
   });
 
   const shouldFetchHolders =
-    !tokenQuery.isPlaceholderData &&
-    !tokenInstanceQuery.isPlaceholderData &&
-    tokenInstanceQuery.data &&
-    !tokenInstanceQuery.data.is_unique;
+                !tokenQuery.isPlaceholderData &&
+                !tokenInstanceQuery.isPlaceholderData &&
+                tokenInstanceQuery.data &&
+                !tokenInstanceQuery.data.is_unique;
 
   const holdersQuery = useQueryWithPages({
     resourceName: 'token_instance_holders',
@@ -102,12 +101,14 @@ const TokenInstanceContent = () => {
     shouldFetchHolders ?
       { id: 'holders', title: 'Holders', component: <TokenHolders holdersQuery={ holdersQuery } token={ tokenQuery.data } shouldRender={ !isLoading }/> } :
       undefined,
-    { id: 'metadata', title: 'Metadata', component: (
-      <TokenInstanceMetadata
-        data={ tokenInstanceQuery.data?.metadata }
-        isPlaceholderData={ isLoading }
-      />
-    ) },
+    {
+      id: 'metadata', title: 'Metadata', component: (
+        <TokenInstanceMetadata
+          data={ tokenInstanceQuery.data?.metadata }
+          isPlaceholderData={ isLoading }
+        />
+      ),
+    },
   ].filter(Boolean);
 
   throwOnResourceLoadError(tokenInstanceQuery);
@@ -122,8 +123,6 @@ const TokenInstanceContent = () => {
 
   return (
     <MetadataUpdateProvider>
-      <TextAd mb={ 6 }/>
-
       <TokenInstancePageTitle
         isLoading={ isLoading }
         token={ tokenQuery.data }

@@ -11,7 +11,6 @@ import { useSettingsContext } from 'lib/contexts/settings';
 import useIsMobile from 'lib/hooks/useIsMobile';
 import * as regexp from 'lib/regexp';
 import useMarketplaceApps from 'ui/marketplace/useMarketplaceApps';
-import TextAd from 'ui/shared/ad/TextAd';
 import ContentLoader from 'ui/shared/ContentLoader';
 import type { ApiCategory, ItemsCategoriesMap } from 'ui/shared/search/utils';
 import { getItemCategory, searchCategories } from 'ui/shared/search/utils';
@@ -44,12 +43,12 @@ const SearchBarSuggest = ({ query, searchTerm, onItemClick, containerId }: Props
       return;
     }
     const topLimit = container.getBoundingClientRect().y + (tabsRef.current?.clientHeight || 0) + 24;
-    if (categoriesRefs.current[categoriesRefs.current.length - 1].getBoundingClientRect().y <= topLimit) {
+    if (categoriesRefs.current[ categoriesRefs.current.length - 1 ].getBoundingClientRect().y <= topLimit) {
       setTabIndex(categoriesRefs.current.length - 1);
       return;
     }
     for (let i = 0; i < categoriesRefs.current.length - 1; i++) {
-      if (categoriesRefs.current[i].getBoundingClientRect().y <= topLimit && categoriesRefs.current[i + 1].getBoundingClientRect().y > topLimit) {
+      if (categoriesRefs.current[ i ].getBoundingClientRect().y <= topLimit && categoriesRefs.current[ i + 1 ].getBoundingClientRect().y > topLimit) {
         setTabIndex(i);
         break;
       }
@@ -80,9 +79,9 @@ const SearchBarSuggest = ({ query, searchTerm, onItemClick, containerId }: Props
       const cat = getItemCategory(item) as ApiCategory;
       if (cat) {
         if (cat in map) {
-          map[cat]?.push(item);
+          map[ cat ]?.push(item);
         } else {
-          map[cat] = [ item ];
+          map[ cat ] = [ item ];
         }
       }
     });
@@ -92,7 +91,7 @@ const SearchBarSuggest = ({ query, searchTerm, onItemClick, containerId }: Props
     }
 
     if (Object.keys(map).length > 0 && !map.block && regexp.BLOCK_HEIGHT.test(searchTerm)) {
-      map['block'] = [ {
+      map[ 'block' ] = [ {
         type: 'block',
         block_type: 'block',
         block_number: searchTerm,
@@ -105,7 +104,7 @@ const SearchBarSuggest = ({ query, searchTerm, onItemClick, containerId }: Props
   }, [ query.data, marketplaceApps.displayedApps, searchTerm ]);
 
   React.useEffect(() => {
-    categoriesRefs.current = Array(Object.keys(itemsGroups).length).fill('').map((_, i) => categoriesRefs.current[i] || React.createRef());
+    categoriesRefs.current = Array(Object.keys(itemsGroups).length).fill('').map((_, i) => categoriesRefs.current[ i ] || React.createRef());
   }, [ itemsGroups ]);
 
   const scrollToCategory = React.useCallback((index: number) => () => {
@@ -129,7 +128,7 @@ const SearchBarSuggest = ({ query, searchTerm, onItemClick, containerId }: Props
       return <Text>Something went wrong. Try refreshing the page or come back later.</Text>;
     }
 
-    const resultCategories = searchCategories.filter(cat => itemsGroups[cat.id]);
+    const resultCategories = searchCategories.filter(cat => itemsGroups[ cat.id ]);
 
     if (resultCategories.length === 0) {
       if (regexp.BLOCK_HEIGHT.test(searchTerm)) {
@@ -164,12 +163,12 @@ const SearchBarSuggest = ({ query, searchTerm, onItemClick, containerId }: Props
                 mt={ 6 }
                 mb={ 3 }
                 ref={ (el: HTMLParagraphElement) => {
-                  categoriesRefs.current[indx] = el;
+                  categoriesRefs.current[ indx ] = el;
                 } }
               >
                 { cat.title }
               </Text>
-              { cat.id !== 'app' && itemsGroups[cat.id]?.map((item, index) => (
+              { cat.id !== 'app' && itemsGroups[ cat.id ]?.map((item, index) => (
                 <SearchBarSuggestItem
                   key={ index }
                   data={ item }
@@ -179,7 +178,7 @@ const SearchBarSuggest = ({ query, searchTerm, onItemClick, containerId }: Props
                   addressFormat={ settingsContext?.addressFormat }
                 />
               )) }
-              { cat.id === 'app' && itemsGroups[cat.id]?.map((item, index) =>
+              { cat.id === 'app' && itemsGroups[ cat.id ]?.map((item, index) =>
                 <SearchBarSuggestApp key={ index } data={ item } isMobile={ isMobile } searchTerm={ searchTerm } onClick={ onItemClick }/>,
               ) }
             </Element>
@@ -191,11 +190,6 @@ const SearchBarSuggest = ({ query, searchTerm, onItemClick, containerId }: Props
 
   return (
     <Box mt={ 5 } mb={ 5 }>
-      { !isMobile && (
-        <Box pb={ 4 } mb={ 5 } borderColor="divider" borderBottomWidth="1px" _empty={{ display: 'none' }}>
-          <TextAd/>
-        </Box>
-      ) }
       { content }
     </Box>
   );

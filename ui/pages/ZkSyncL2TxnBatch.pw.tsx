@@ -13,9 +13,8 @@ const hooksConfig = {
   },
 };
 
-test.beforeEach(async({ mockTextAd, mockApiResponse, mockEnvs }) => {
+test.beforeEach(async({ mockApiResponse, mockEnvs }) => {
   await mockEnvs(ENVS_MAP.zkSyncRollup);
-  await mockTextAd();
   await mockApiResponse('zksync_l2_txn_batch', zkSyncTxnBatchMock.base, { pathParams: { number: batchNumber } });
 });
 
@@ -25,7 +24,7 @@ test('base view', async({ render }) => {
 });
 
 test.describe('mobile', () => {
-  test.use({ viewport: devices['iPhone 13 Pro'].viewport });
+  test.use({ viewport: devices[ 'iPhone 13 Pro' ].viewport });
   test('base view', async({ render }) => {
     const component = await render(<ZkSyncL2TxnBatch/>, { hooksConfig });
     await expect(component).toHaveScreenshot();

@@ -8,10 +8,6 @@ import Chart from './Chart';
 
 const CHART_ID = 'averageGasPrice';
 
-test.beforeEach(async({ mockTextAd }) => {
-  await mockTextAd();
-});
-
 const hooksConfig = {
   router: {
     query: { id: CHART_ID },

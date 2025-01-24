@@ -6,8 +6,7 @@ import { test, expect } from 'playwright/lib';
 
 import ZkEvmL2Withdrawals from './ZkEvmL2Withdrawals';
 
-test('base view +@mobile', async({ render, mockApiResponse, mockEnvs, mockTextAd }) => {
-  await mockTextAd();
+test('base view +@mobile', async({ render, mockApiResponse, mockEnvs }) => {
   await mockEnvs(ENVS_MAP.zkEvmRollup);
   await mockApiResponse('zkevm_l2_withdrawals', withdrawalsMock.baseResponse);
   await mockApiResponse('zkevm_l2_withdrawals_count', 3971111);

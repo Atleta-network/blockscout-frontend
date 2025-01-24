@@ -8,7 +8,6 @@ import { useAppContext } from 'lib/contexts/app';
 import throwOnResourceLoadError from 'lib/errors/throwOnResourceLoadError';
 import getQueryParamString from 'lib/router/getQueryParamString';
 import { publicClient } from 'lib/web3/client';
-import TextAd from 'ui/shared/ad/TextAd';
 import isCustomAppError from 'ui/shared/AppError/isCustomAppError';
 import EntityTags from 'ui/shared/EntityTags/EntityTags';
 import PageTitle from 'ui/shared/Page/PageTitle';
@@ -101,7 +100,7 @@ const TransactionPageContent = () => {
       return (
         <>
           <TabsSkeleton tabs={ tabs } mt={ 6 }/>
-          { tabs[tabIndex]?.component }
+          { tabs[ tabIndex ]?.component }
         </>
       );
     }
@@ -117,7 +116,6 @@ const TransactionPageContent = () => {
 
   return (
     <>
-      <TextAd mb={ 6 }/>
       <PageTitle
         title="Transaction details"
         backLink={ backLink }

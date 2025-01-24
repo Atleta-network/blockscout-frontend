@@ -7,10 +7,6 @@ import { test, expect } from 'playwright/lib';
 
 import GasTracker from './GasTracker';
 
-test.beforeEach(async({ mockTextAd }) => {
-  await mockTextAd();
-});
-
 test('base view +@dark-mode +@mobile', async({ render, mockApiResponse, mockEnvs, page }) => {
   await mockEnvs([
     [ 'NEXT_PUBLIC_SEO_ENHANCED_DATA_ENABLED', 'true' ],

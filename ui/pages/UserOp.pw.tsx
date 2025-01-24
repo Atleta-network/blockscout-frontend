@@ -17,8 +17,7 @@ test.beforeEach(async({ mockEnvs }) => {
   await mockEnvs(ENVS_MAP.userOps);
 });
 
-test('base view', async({ render, mockTextAd, mockApiResponse }) => {
-  await mockTextAd();
+test('base view', async({ render, mockApiResponse }) => {
   await mockApiResponse('user_op', userOpData, { pathParams: { hash: userOpData.hash } });
   const component = await render(<UserOp/>, { hooksConfig });
   await component.getByText('View details').click();
@@ -26,10 +25,9 @@ test('base view', async({ render, mockTextAd, mockApiResponse }) => {
 });
 
 test.describe('mobile', () => {
-  test.use({ viewport: devices['iPhone 13 Pro'].viewport });
+  test.use({ viewport: devices[ 'iPhone 13 Pro' ].viewport });
 
-  test('base view', async({ render, mockTextAd, mockApiResponse }) => {
-    await mockTextAd();
+  test('base view', async({ render, mockApiResponse }) => {
     await mockApiResponse('user_op', userOpData, { pathParams: { hash: userOpData.hash } });
     const component = await render(<UserOp/>, { hooksConfig });
     await component.getByText('View details').click();

@@ -13,9 +13,8 @@ const hooksConfig = {
   },
 };
 
-test.beforeEach(async({ mockTextAd, mockApiResponse, mockEnvs }) => {
+test.beforeEach(async({ mockApiResponse, mockEnvs }) => {
   await mockEnvs(ENVS_MAP.zkEvmRollup);
-  await mockTextAd();
   await mockApiResponse('zkevm_l2_txn_batch', txnBatchData, { pathParams: { number: batchNumber } });
 });
 
@@ -26,7 +25,7 @@ test('base view', async({ render }) => {
 });
 
 test.describe('mobile', () => {
-  test.use({ viewport: devices['iPhone 13 Pro'].viewport });
+  test.use({ viewport: devices[ 'iPhone 13 Pro' ].viewport });
   test('base view', async({ render }) => {
     test.slow();
     const component = await render(<ZkEvmL2TxnBatch/>, { hooksConfig });

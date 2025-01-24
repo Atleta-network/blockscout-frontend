@@ -6,10 +6,9 @@ import { test, expect } from 'playwright/lib';
 
 import ArbitrumL2TxnBatches from './ArbitrumL2TxnBatches';
 
-test('base view +@mobile', async({ render, mockEnvs, mockTextAd, mockApiResponse }) => {
+test('base view +@mobile', async({ render, mockEnvs, mockApiResponse }) => {
   test.slow();
   await mockEnvs(ENVS_MAP.arbitrumRollup);
-  await mockTextAd();
   await mockApiResponse('arbitrum_l2_txn_batches', arbitrumTxnBatchesMock.baseResponse);
   await mockApiResponse('arbitrum_l2_txn_batches_count', 9927);
 

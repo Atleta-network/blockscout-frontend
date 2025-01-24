@@ -15,10 +15,6 @@ const hooksConfig = {
   },
 };
 
-test.beforeEach(async({ mockTextAd }) => {
-  await mockTextAd();
-});
-
 test('degradation view, details tab', async({ render, mockApiResponse, mockRpcResponse, page }) => {
   await mockApiResponse('block', null as never, { pathParams: { height_or_hash: height }, status: 500 });
   await mockRpcResponse({
@@ -28,7 +24,7 @@ test('degradation view, details tab', async({ render, mockApiResponse, mockRpcRe
   });
 
   const component = await render(<Block/>, { hooksConfig });
-  await page.waitForResponse(config.chain.rpcUrls[0]);
+  await page.waitForResponse(config.chain.rpcUrls[ 0 ]);
 
   await expect(component).toHaveScreenshot();
 });
@@ -49,7 +45,7 @@ test('degradation view, txs tab', async({ render, mockApiResponse, mockRpcRespon
   });
 
   const component = await render(<Block/>, { hooksConfig });
-  await page.waitForResponse(config.chain.rpcUrls[0]);
+  await page.waitForResponse(config.chain.rpcUrls[ 0 ]);
 
   await expect(component).toHaveScreenshot();
 });
@@ -71,7 +67,7 @@ test('degradation view, withdrawals tab', async({ render, mockApiResponse, mockR
   });
 
   const component = await render(<Block/>, { hooksConfig });
-  await page.waitForResponse(config.chain.rpcUrls[0]);
+  await page.waitForResponse(config.chain.rpcUrls[ 0 ]);
 
   await expect(component).toHaveScreenshot();
 });

@@ -7,7 +7,6 @@ import Skeleton from 'ui/shared/chakra/Skeleton';
 import CopyToClipboard from 'ui/shared/CopyToClipboard';
 import * as DetailsInfoItem from 'ui/shared/DetailsInfoItem';
 import DetailsInfoItemDivider from 'ui/shared/DetailsInfoItemDivider';
-import DetailsSponsoredItem from 'ui/shared/DetailsSponsoredItem';
 import TxEntity from 'ui/shared/entities/tx/TxEntity';
 
 import BlobData from './BlobData';
@@ -84,7 +83,7 @@ const BlobInfo = ({ data, isLoading }: Props) => {
 
       { data.blob_data && <DetailsInfoItemDivider/> }
 
-      { data.transaction_hashes[0] && (
+      { data.transaction_hashes[ 0 ] && (
         <>
           <DetailsInfoItem.Label
             hint="Hash of the transaction with this blob"
@@ -93,12 +92,10 @@ const BlobInfo = ({ data, isLoading }: Props) => {
             Transaction hash
           </DetailsInfoItem.Label>
           <DetailsInfoItem.Value>
-            <TxEntity hash={ data.transaction_hashes[0].transaction_hash } isLoading={ isLoading } noIcon noCopy={ false }/>
+            <TxEntity hash={ data.transaction_hashes[ 0 ].transaction_hash } isLoading={ isLoading } noIcon noCopy={ false }/>
           </DetailsInfoItem.Value>
         </>
       ) }
-
-      <DetailsSponsoredItem isLoading={ isLoading }/>
 
       { data.blob_data && (
         <>
