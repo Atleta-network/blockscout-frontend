@@ -9,7 +9,6 @@ import config from 'configs/app';
 import type { ResourceError } from 'lib/api/resources';
 import useApiQuery from 'lib/api/useApiQuery';
 import useFetch from 'lib/hooks/useFetch';
-import useIssueUrl from 'lib/hooks/useIssueUrl';
 import { copy } from 'lib/html-entities';
 import Skeleton from 'ui/shared/chakra/Skeleton';
 import IconSvg from 'ui/shared/IconSvg';
@@ -33,45 +32,44 @@ const Footer = () => {
     },
   });
   const apiVersionUrl = getApiVersionUrl(backendVersionData?.backend_version);
-  const issueUrl = useIssueUrl(backendVersionData?.backend_version);
   const logoColor = useColorModeValue('blue.600', 'white');
 
   const BLOCKSCOUT_LINKS = [
     {
-      icon: 'edit' as const,
-      iconSize: '16px',
-      text: 'Submit an issue',
-      url: issueUrl,
-    },
-    {
-      icon: 'social/git' as const,
-      iconSize: '18px',
-      text: 'Contribute',
-      url: 'https://github.com/blockscout/blockscout',
-    },
-    {
       icon: 'social/twitter' as const,
       iconSize: '18px',
-      text: 'X (ex-Twitter)',
-      url: 'https://www.twitter.com/blockscoutcom',
+      text: 'Twitter',
+      url: 'https://x.com/Atleta_Network',
     },
     {
       icon: 'social/discord' as const,
       iconSize: '24px',
       text: 'Discord',
-      url: 'https://discord.gg/blockscout',
+      url: 'https://discord.com/invite/atletanetwork',
     },
     {
-      icon: 'brands/blockscout' as const,
-      iconSize: '18px',
-      text: 'All chains',
-      url: 'https://www.blockscout.com/chains-and-projects',
+      icon: 'social/youtube' as const,
+      iconSize: '24px',
+      text: 'YouTube',
+      url: 'https://www.youtube.com/@blockchain_sports',
     },
     {
-      icon: 'donate' as const,
-      iconSize: '20px',
-      text: 'Donate',
-      url: 'https://github.com/sponsors/blockscout',
+      icon: 'social/git' as const,
+      iconSize: '24px',
+      text: 'GitBook',
+      url: 'https://blockchain-sports.gitbook.io/whitepaper',
+    },
+    {
+      icon: 'social/instagram' as const,
+      iconSize: '24px',
+      text: 'Instagram',
+      url: 'https://instagram.com/blockchain.sports',
+    },
+    {
+      icon: 'social/telega' as const,
+      iconSize: '24px',
+      text: 'Telegram',
+      url: 'https://t.me/bcsports_io',
     },
   ];
 
@@ -99,7 +97,7 @@ const Footer = () => {
 
   const colNum = isPlaceholderData ? 1 : Math.min(linksData?.length || Infinity, MAX_LINKS_COLUMNS) + 1;
 
-  const renderNetworkInfo = React.useCallback((gridArea?: GridProps['gridArea']) => {
+  const renderNetworkInfo = React.useCallback((gridArea?: GridProps[ 'gridArea' ]) => {
     return (
       <Flex
         gridArea={ gridArea }
@@ -115,7 +113,7 @@ const Footer = () => {
     );
   }, []);
 
-  const renderProjectInfo = React.useCallback((gridArea?: GridProps['gridArea']) => {
+  const renderProjectInfo = React.useCallback((gridArea?: GridProps[ 'gridArea' ]) => {
     return (
       <Box gridArea={ gridArea }>
         <Flex columnGap={ 2 } fontSize="xs" lineHeight={ 5 } alignItems="center" color="text">
@@ -165,7 +163,7 @@ const Footer = () => {
     m: '0 auto',
   };
 
-  const renderRecaptcha = (gridArea?: GridProps['gridArea']) => {
+  const renderRecaptcha = (gridArea?: GridProps[ 'gridArea' ]) => {
     if (!config.services.reCaptchaV2.siteKey) {
       return <Box gridArea={ gridArea }/>;
     }
