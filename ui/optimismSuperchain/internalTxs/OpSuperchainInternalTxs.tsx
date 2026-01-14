@@ -67,7 +67,6 @@ const OpSuperchainInternalTxs = () => {
     <>
       <PageTitle
         title="Internal transactions"
-        withTextAd
       />
       <DataListDisplay
         isError={ isError }

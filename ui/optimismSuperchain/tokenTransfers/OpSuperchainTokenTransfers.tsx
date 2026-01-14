@@ -84,7 +84,6 @@ const OpSuperchainTokenTransfers = () => {
   return (
     <>
       <PageTitle
-        withTextAd
         title="Token transfers"
       />
       <RoutedTabs

@@ -5,8 +5,7 @@ import { test, expect } from 'playwright/lib';
 
 import MudWorlds from './MudWorlds';
 
-test('default view +@mobile', async({ mockTextAd, mockApiResponse, render }) => {
-  await mockTextAd();
+test('default view +@mobile', async({ mockApiResponse, render }) => {
   await mockApiResponse('general:mud_worlds', mudWorlds);
   const component = await render(<MudWorlds/>);
   await expect(component).toHaveScreenshot();

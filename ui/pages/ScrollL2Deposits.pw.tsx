@@ -6,8 +6,7 @@ import { test, expect, devices } from 'playwright/lib';
 
 import ScrollL2Deposits from './ScrollL2Deposits';
 
-test('base view', async({ render, mockApiResponse, mockEnvs, mockTextAd }) => {
-  await mockTextAd();
+test('base view', async({ render, mockApiResponse, mockEnvs }) => {
   await mockEnvs(ENVS_MAP.scrollRollup);
   await mockApiResponse('general:scroll_l2_deposits', messagesMock.baseResponse);
   await mockApiResponse('general:scroll_l2_deposits_count', 3971111);
@@ -20,8 +19,7 @@ test('base view', async({ render, mockApiResponse, mockEnvs, mockTextAd }) => {
 test.describe('mobile', () => {
   test.use({ viewport: devices['iPhone 13 Pro'].viewport });
 
-  test('base view', async({ render, mockApiResponse, mockEnvs, mockTextAd }) => {
-    await mockTextAd();
+  test('base view', async({ render, mockApiResponse, mockEnvs }) => {
     await mockEnvs(ENVS_MAP.scrollRollup);
     await mockApiResponse('general:scroll_l2_deposits', messagesMock.baseResponse);
     await mockApiResponse('general:scroll_l2_deposits_count', 3971111);

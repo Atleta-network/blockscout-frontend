@@ -52,7 +52,6 @@ const testWidgetsFn = (isMobile: boolean) => async({ render, mockConfigResponse,
   }
 
   await expect(component).toHaveScreenshot({
-    mask: [ page.locator(pwConfig.adsBannerSelector) ],
     maskColor: pwConfig.maskColor,
   });
 };
@@ -72,7 +71,6 @@ test.describe('mobile', () => {
     );
 
     await expect(component).toHaveScreenshot({
-      mask: [ page.locator(pwConfig.adsBannerSelector) ],
       maskColor: pwConfig.maskColor,
     });
   });
@@ -89,7 +87,6 @@ test.describe('mobile', () => {
     );
 
     await expect(component).toHaveScreenshot({
-      mask: [ page.locator(pwConfig.adsBannerSelector) ],
       maskColor: pwConfig.maskColor,
     });
   });
@@ -106,7 +103,6 @@ test.describe('mobile', () => {
     );
 
     await expect(component).toHaveScreenshot({
-      mask: [ page.locator(pwConfig.adsBannerSelector) ],
       maskColor: pwConfig.maskColor,
     });
   });
@@ -126,7 +122,6 @@ test('contract', async({ render, page, mockApiResponse }) => {
   );
 
   await expect(component).toHaveScreenshot({
-    mask: [ page.locator(pwConfig.adsBannerSelector) ],
     maskColor: pwConfig.maskColor,
   });
 });
@@ -148,7 +143,6 @@ test.fixme('token', async({ render, mockApiResponse, injectMetaMaskProvider, pag
   );
 
   await expect(component).toHaveScreenshot({
-    mask: [ page.locator(pwConfig.adsBannerSelector) ],
     maskColor: pwConfig.maskColor,
   });
 });
@@ -165,7 +159,6 @@ test('validator', async({ render, mockApiResponse, page }) => {
   );
 
   await expect(component).toHaveScreenshot({
-    mask: [ page.locator(pwConfig.adsBannerSelector) ],
     maskColor: pwConfig.maskColor,
   });
 });
@@ -182,7 +175,6 @@ test('filecoin', async({ render, mockApiResponse, page }) => {
   );
 
   await expect(component).toHaveScreenshot({
-    mask: [ page.locator(pwConfig.adsBannerSelector) ],
     maskColor: pwConfig.maskColor,
   });
 });

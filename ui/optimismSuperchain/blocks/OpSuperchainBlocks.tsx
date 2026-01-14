@@ -112,7 +112,6 @@ const OpSuperchainBlocks = () => {
   return (
     <>
       <PageTitle
-        withTextAd
         title="Blocks"
       />
       <RoutedTabs

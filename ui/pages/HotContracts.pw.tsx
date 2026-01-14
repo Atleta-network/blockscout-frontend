@@ -7,10 +7,9 @@ import { getIntervalValueFromQuery } from 'ui/hotContracts/utils';
 
 import HotContracts from './HotContracts';
 
-test('base view +@mobile', async({ render, mockTextAd, mockApiResponse, mockEnvs }) => {
+test('base view +@mobile', async({ render, mockApiResponse, mockEnvs }) => {
   test.slow();
   await mockEnvs([ [ 'NEXT_PUBLIC_VIEWS_TOKEN_SCAM_TOGGLE_ENABLED', 'true' ] ]);
-  await mockTextAd();
   await mockApiResponse(
     'general:stats_hot_contracts',
     contractsMock.hotContractsResponse,

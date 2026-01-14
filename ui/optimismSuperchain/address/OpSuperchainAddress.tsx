@@ -14,7 +14,6 @@ import RoutedTabs from 'toolkit/components/RoutedTabs/RoutedTabs';
 import { CONTRACT_TAB_IDS } from 'ui/address/contract/utils';
 import AddressQrCode from 'ui/address/details/AddressQrCode';
 import ClusterChainsPopover from 'ui/optimismSuperchain/components/ClusterChainsPopover';
-import TextAd from 'ui/shared/ad/TextAd';
 import AddressEntity from 'ui/shared/entities/address/AddressEntity';
 import PageTitle from 'ui/shared/Page/PageTitle';
 
@@ -130,7 +129,6 @@ const OpSuperchainAddress = () => {
 
   return (
     <>
-      <TextAd mb={ 6 }/>
       <PageTitle
         title={ `${ isContract ? 'Contract' : 'Address' } details` }
         isLoading={ isLoading }

@@ -1,7 +1,5 @@
 import type { GetServerSidePropsContext, GetServerSidePropsResult } from 'next';
 
-import type { AdBannerProviders } from 'types/client/adProviders';
-
 import type { Route } from 'nextjs-routes';
 
 import config from 'configs/app';
@@ -10,13 +8,10 @@ import type * as metadata from 'lib/metadata';
 
 import { isLikelyHumanBrowser, isKnownBotRequest } from '../utils/checkRealBrowser';
 
-const adBannerFeature = config.features.adsBanner;
-
 export interface Props<Pathname extends Route['pathname'] = never> {
   query: Route['query'];
   cookies: string;
   referrer: string;
-  adBannerProvider: AdBannerProviders | null;
   // if apiData is undefined, Next.js will complain that it is not serializable
   // so we force it to be always present in the props but it can be null
   apiData: metadata.ApiData<Pathname> | null;
@@ -26,18 +21,6 @@ export interface Props<Pathname extends Route['pathname'] = never> {
 export const base = async <Pathname extends Route['pathname'] = never>({ req, res, query }: GetServerSidePropsContext):
 Promise<GetServerSidePropsResult<Props<Pathname>>> => {
   const appProfile = req.headers?.['x-app-profile'] || cookies.getFromCookieString(req.headers.cookie || '', cookies.NAMES.APP_PROFILE);
-  const adBannerProvider = (() => {
-    if (adBannerFeature.isEnabled) {
-      if ('additionalProvider' in adBannerFeature && adBannerFeature.additionalProvider) {
-        // we need to get a random ad provider on the server side to keep it consistent with the client side
-        const randomIndex = Math.round(Math.random());
-        return [ adBannerFeature.provider, adBannerFeature.additionalProvider ][randomIndex];
-      } else {
-        return adBannerFeature.provider;
-      }
-    }
-    return null;
-  })();
 
   let uuid = cookies.getFromCookieString(req.headers.cookie || '', cookies.NAMES.UUID);
   if (!uuid && appProfile !== 'private') {
@@ -77,7 +60,6 @@ Promise<GetServerSidePropsResult<Props<Pathname>>> => {
       query,
       cookies: req.headers.cookie || '',
       referrer: req.headers.referer || '',
-      adBannerProvider: adBannerProvider,
       apiData: null,
       uuid,
     },

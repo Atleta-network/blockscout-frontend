@@ -49,7 +49,6 @@ test('base view +@dark-mode', async({ render, page }) => {
     </MetadataUpdateProvider>,
   );
   await expect(component).toHaveScreenshot({
-    mask: [ page.locator(pwConfig.adsBannerSelector) ],
     maskColor: pwConfig.maskColor,
   });
 });
@@ -69,7 +68,6 @@ test.describe('action button', () => {
       </MetadataUpdateProvider>,
     );
     await expect(component).toHaveScreenshot({
-      mask: [ page.locator(pwConfig.adsBannerSelector) ],
       maskColor: pwConfig.maskColor,
     });
   });
@@ -82,7 +80,6 @@ test.describe('action button', () => {
       </MetadataUpdateProvider>,
     );
     await expect(component).toHaveScreenshot({
-      mask: [ page.locator(pwConfig.adsBannerSelector) ],
       maskColor: pwConfig.maskColor,
     });
   });
@@ -98,7 +95,6 @@ test.describe('mobile', () => {
       </MetadataUpdateProvider>,
     );
     await expect(component).toHaveScreenshot({
-      mask: [ page.locator(pwConfig.adsBannerSelector) ],
       maskColor: pwConfig.maskColor,
     });
   });

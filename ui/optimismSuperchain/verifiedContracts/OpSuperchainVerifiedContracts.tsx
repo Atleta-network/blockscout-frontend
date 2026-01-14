@@ -89,7 +89,6 @@ const OpSuperchainVerifiedContracts = () => {
     <Box>
       <PageTitle
         title="Verified contracts"
-        withTextAd
       />
       <ChainSelect
         value={ chainValue }

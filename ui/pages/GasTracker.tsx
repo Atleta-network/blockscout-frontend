@@ -86,7 +86,6 @@ const GasTracker = () => {
       <PageTitle
         title={ config.meta.seo.enhancedDataEnabled ? `${ config.chain.name } gas tracker` : 'Gas tracker' }
         secondRow={ titleSecondRow }
-        withTextAd
       />
       <Heading level="2" mt={ 8 } mb={ 4 }>{ `Track ${ config.chain.name } gas fees` }</Heading>
       { snippets }

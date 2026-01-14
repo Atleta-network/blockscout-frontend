@@ -139,7 +139,7 @@ const OpSuperchainTokens = () => {
 
   return (
     <>
-      <PageTitle title="Tokens" withTextAd/>
+      <PageTitle title="Tokens"/>
       <Tokens
         query={ tokensQuery }
         actionBar={ actionBar }

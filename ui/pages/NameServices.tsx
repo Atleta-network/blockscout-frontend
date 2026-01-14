@@ -20,7 +20,6 @@ const NameServices = () => {
     <>
       <PageTitle
         title={ config.meta.seo.enhancedDataEnabled ? `${ config.chain.name } name services` : 'Name services lookup' }
-        withTextAd
       />
       <RoutedTabs tabs={ tabs }/>
     </>

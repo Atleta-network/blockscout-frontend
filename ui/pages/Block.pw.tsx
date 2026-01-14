@@ -15,10 +15,6 @@ const hooksConfig = {
   },
 };
 
-test.beforeEach(async({ mockTextAd }) => {
-  await mockTextAd();
-});
-
 test('degradation view, details tab', async({ render, mockApiResponse, mockRpcResponse, page }) => {
   test.slow();
   await mockApiResponse('general:block', null as never, { pathParams: { height_or_hash: height }, status: 500 });

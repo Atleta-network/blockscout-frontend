@@ -15,11 +15,10 @@ const hooksConfig = {
   },
 };
 
-test('base view', async({ mockApiResponse, render, page, mockMultichainConfig, mockEnvs, mockAssetResponse, mockTextAd }) => {
+test('base view', async({ mockApiResponse, render, page, mockMultichainConfig, mockEnvs, mockAssetResponse }) => {
 
   await mockMultichainConfig();
   await mockEnvs(ENVS_MAP.opSuperchain);
-  await mockTextAd();
 
   await mockApiResponse('multichainAggregator:address', opSuperchainMock.addressA, { pathParams: { hash: CURRENT_ADDRESS } });
   await mockApiResponse('multichainAggregator:address_tokens', {
@@ -48,7 +47,6 @@ test('base view', async({ mockApiResponse, render, page, mockMultichainConfig, m
   );
 
   await expect(component).toHaveScreenshot({
-    mask: [ page.locator(pwConfig.adsBannerSelector) ],
     maskColor: pwConfig.maskColor,
   });
 

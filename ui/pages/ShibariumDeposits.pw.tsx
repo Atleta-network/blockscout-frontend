@@ -6,9 +6,8 @@ import { test, expect } from 'playwright/lib';
 
 import ShibariumDeposits from './ShibariumDeposits';
 
-test('base view +@mobile', async({ render, mockApiResponse, mockEnvs, mockTextAd }) => {
+test('base view +@mobile', async({ render, mockApiResponse, mockEnvs }) => {
   test.slow();
-  await mockTextAd();
   await mockEnvs(ENVS_MAP.shibariumRollup);
   await mockApiResponse('general:shibarium_deposits', depositsData);
   await mockApiResponse('general:shibarium_deposits_count', 3971111);

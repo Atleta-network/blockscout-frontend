@@ -20,8 +20,7 @@ const MESSAGES_RESPONSE = {
   },
 };
 
-test('default view', async({ render, mockTextAd, mockAssetResponse, mockApiResponse }) => {
-  await mockTextAd();
+test('default view', async({ render, mockAssetResponse, mockApiResponse }) => {
   await mockAssetResponse(interopMessageMock.chain.chain_logo as string, './playwright/mocks/image_s.jpg');
   await mockApiResponse('general:optimistic_l2_interop_messages', MESSAGES_RESPONSE);
   await mockApiResponse('general:optimistic_l2_interop_messages_count', 4000000);
@@ -31,8 +30,7 @@ test('default view', async({ render, mockTextAd, mockAssetResponse, mockApiRespo
 
 test.describe('mobile', () => {
   test.use({ viewport: pwConfig.viewport.mobile });
-  test('default view', async({ render, mockTextAd, mockAssetResponse, mockApiResponse }) => {
-    await mockTextAd();
+  test('default view', async({ render, mockAssetResponse, mockApiResponse }) => {
     await mockAssetResponse(interopMessageMock.chain.chain_logo as string, './playwright/mocks/image_s.jpg');
     await mockApiResponse('general:optimistic_l2_interop_messages', MESSAGES_RESPONSE);
     await mockApiResponse('general:optimistic_l2_interop_messages_count', 4000000);

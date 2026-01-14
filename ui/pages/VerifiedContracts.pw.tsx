@@ -6,10 +6,9 @@ import { test, expect } from 'playwright/lib';
 
 import VerifiedContracts from './VerifiedContracts';
 
-test('base view +@mobile', async({ render, mockTextAd, mockApiResponse, mockEnvs }) => {
+test('base view +@mobile', async({ render, mockApiResponse, mockEnvs }) => {
   test.slow();
   await mockEnvs([ [ 'NEXT_PUBLIC_STATS_API_HOST', '' ] ]);
-  await mockTextAd();
   await mockApiResponse('general:verified_contracts', verifiedContractsMock.baseResponse);
   await mockApiResponse('general:verified_contracts_counters', verifiedContractsCountersMock);
   await mockApiResponse('general:config_contract_languages', { languages: [ 'solidity', 'vyper' ] });

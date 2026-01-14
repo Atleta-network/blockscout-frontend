@@ -5,8 +5,7 @@ import { test, expect } from 'playwright/lib';
 
 import AdvancedFilter from './AdvancedFilter';
 
-test('base view +@dark-mode', async({ render, mockApiResponse, mockTextAd }) => {
-  await mockTextAd();
+test('base view +@dark-mode', async({ render, mockApiResponse }) => {
   await mockApiResponse('general:advanced_filter', advancedFilterMock.baseResponse);
   await mockApiResponse('general:tokens', { items: [], next_page_params: null }, { queryParams: { limit: '7', q: '' } });
   await mockApiResponse('general:advanced_filter_methods', [], { queryParams: { q: '' } });

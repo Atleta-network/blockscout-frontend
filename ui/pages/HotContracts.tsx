@@ -115,7 +115,6 @@ const HotContracts = () => {
     <>
       <PageTitle
         title="Hot contracts"
-        withTextAd
       />
       <DataListDisplay
         isError={ isError }

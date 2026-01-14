@@ -75,7 +75,6 @@ const OpSuperchainAccounts = () => {
     <>
       <PageTitle
         title="Top accounts"
-        withTextAd
       />
       <DataListDisplay
         isError={ isError }

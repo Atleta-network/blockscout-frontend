@@ -13,9 +13,8 @@ const hooksConfig = {
   },
 };
 
-test.beforeEach(async({ mockTextAd, mockApiResponse, mockEnvs }) => {
+test.beforeEach(async({ mockApiResponse, mockEnvs }) => {
   await mockEnvs(ENVS_MAP.zkSyncRollup);
-  await mockTextAd();
   await mockApiResponse('general:zksync_l2_txn_batch', zkSyncTxnBatchMock.base, { pathParams: { number: batchNumber } });
 });
 

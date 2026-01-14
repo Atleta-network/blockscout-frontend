@@ -59,7 +59,6 @@ const InternalTxs = () => {
     <>
       <PageTitle
         title="Internal transactions"
-        withTextAd
       />
       <DataListDisplay
         isError={ isError }

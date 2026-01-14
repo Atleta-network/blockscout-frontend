@@ -5,7 +5,6 @@ import useIsMobile from 'lib/hooks/useIsMobile';
 import { clearRecentSearchKeywords, getRecentSearchKeywords, removeRecentSearchKeyword } from 'lib/recentSearchKeywords';
 import { Link } from 'toolkit/chakra/link';
 import { ClearButton } from 'toolkit/components/buttons/ClearButton';
-import TextAd from 'ui/shared/ad/TextAd';
 import HashStringShortenDynamic from 'ui/shared/HashStringShortenDynamic';
 
 type Props = {
@@ -46,7 +45,6 @@ const SearchBarRecentKeywords = ({ onClick, onClear }: Props) => {
     <>
       { !isMobile && (
         <Box pb={ 4 } mb={ 5 } borderColor="border.divider" borderBottomWidth="1px" _empty={{ display: 'none' }}>
-          <TextAd textStyle={{ lg: 'sm' }}/>
         </Box>
       ) }
       <Flex mb={ 3 } justifyContent="space-between" fontSize="sm">

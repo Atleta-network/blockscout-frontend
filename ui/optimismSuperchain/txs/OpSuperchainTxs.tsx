@@ -55,7 +55,6 @@ const OpSuperchainTxs = () => {
   return (
     <>
       <PageTitle
-        withTextAd
         title="Transactions"
       />
       <RoutedTabs

@@ -35,7 +35,6 @@ test.describe('default view', () => {
   // FIXME: test is flaky, screenshot in docker container is different from local
   test.skip('-@default +@dark-mode', async({ page }) => {
     await expect(component).toHaveScreenshot({
-      mask: [ page.locator(pwConfig.adsBannerSelector) ],
       maskColor: pwConfig.maskColor,
     });
   });
@@ -45,7 +44,6 @@ test.describe('default view', () => {
 
     test('base view', async({ page }) => {
       await expect(component).toHaveScreenshot({
-        mask: [ page.locator(pwConfig.adsBannerSelector) ],
         maskColor: pwConfig.maskColor,
       });
     });
@@ -74,7 +72,6 @@ test.describe('mobile', () => {
     const component = await render(<Home/>);
 
     await expect(component).toHaveScreenshot({
-      mask: [ page.locator(pwConfig.adsBannerSelector) ],
       maskColor: pwConfig.maskColor,
     });
   });

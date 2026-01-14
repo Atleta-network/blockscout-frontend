@@ -89,7 +89,7 @@ const TacOperations = () => {
 
   return (
     <>
-      <PageTitle title="Operations" withTextAd/>
+      <PageTitle title="Operations"/>
       <DataListDisplay
         isError={ isError }
         itemsNum={ data?.items?.length }

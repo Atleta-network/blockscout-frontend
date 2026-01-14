@@ -13,7 +13,6 @@ const PAGE_PROPS = {
   cookies: '',
   referrer: '',
   query: {},
-  adBannerProvider: null,
   apiData: null,
   uuid: '123',
 };

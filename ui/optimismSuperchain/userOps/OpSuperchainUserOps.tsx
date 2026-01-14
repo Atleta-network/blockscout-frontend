@@ -74,7 +74,6 @@ const OpSuperchainUserOps = () => {
     <>
       <PageTitle
         title="User operations"
-        withTextAd
       />
       <DataListDisplay
         isError={ query.isError }

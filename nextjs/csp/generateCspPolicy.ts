@@ -5,7 +5,6 @@ function generateCspPolicy(isPrivateMode = false) {
   const policyDescriptor = mergeDescriptors(
     descriptors.app(isPrivateMode),
     // Exclude tracking/analytics sources in private mode
-    isPrivateMode ? {} : descriptors.ad(),
     descriptors.cloudFlare(),
     descriptors.flashblocks(),
     descriptors.gasHawk(),

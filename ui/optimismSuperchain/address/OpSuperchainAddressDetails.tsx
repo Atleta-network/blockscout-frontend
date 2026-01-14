@@ -9,7 +9,6 @@ import getCurrencySymbol from 'lib/multichain/getCurrencySymbol';
 import { Link } from 'toolkit/chakra/link';
 import { Skeleton } from 'toolkit/chakra/skeleton';
 import * as DetailedInfo from 'ui/shared/DetailedInfo/DetailedInfo';
-import DetailedInfoSponsoredItem from 'ui/shared/DetailedInfo/DetailedInfoSponsoredItem';
 import ChainIcon from 'ui/shared/externalChains/ChainIcon';
 
 import OpSuperchainAddressCoinBalance from './details/OpSuperchainAddressCoinBalance';
@@ -153,7 +152,6 @@ const OpSuperchainAddressDetails = ({ data, addressHash, isLoading }: Props) => 
         </Skeleton>
       </DetailedInfo.ItemValue>
 
-      <DetailedInfoSponsoredItem isLoading={ isLoading }/>
 
     </DetailedInfo.Container>
   );
