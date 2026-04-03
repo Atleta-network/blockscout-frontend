@@ -38,46 +38,40 @@ const Footer = () => {
 
   const BLOCKSCOUT_LINKS = [
     {
-      icon: 'social/git' as const,
-      iconSize: '20px',
-      text: 'Contribute',
-      url: 'https://github.com/blockscout/blockscout',
-    },
-    {
-      icon: 'brands/pro_api' as const,
-      iconSize: '20px',
-      text: 'PRO API',
-      url: 'https://dev.blockscout.com',
-    },
-    {
-      icon: 'brands/autoscout' as const,
-      iconSize: '20px',
-      text: 'Autoscout',
-      url: 'https://autoscout.blockscout.com',
-    },
-    {
-      icon: 'docs' as const,
-      iconSize: '20px',
-      text: 'Docs',
-      url: 'https://docs.blockscout.com',
-    },
-    {
       icon: 'social/twitter' as const,
-      iconSize: '24px',
-      text: 'X',
-      url: 'https://x.com/blockscout',
+      iconSize: '18px',
+      text: 'Twitter',
+      url: 'https://x.com/Atleta_Network',
     },
     {
       icon: 'social/discord' as const,
       iconSize: '24px',
       text: 'Discord',
-      url: 'https://discord.gg/blockscout',
+      url: 'https://discord.com/invite/atletanetwork',
     },
     {
-      icon: 'brands/blockscout' as const,
-      iconSize: '20px',
-      text: 'All chains',
-      url: 'https://chains.blockscout.com',
+      icon: 'social/youtube' as const,
+      iconSize: '24px',
+      text: 'YouTube',
+      url: 'https://www.youtube.com/@blockchain_sports',
+    },
+    {
+      icon: 'social/git' as const,
+      iconSize: '24px',
+      text: 'GitBook',
+      url: 'https://blockchain-sports.gitbook.io/whitepaper',
+    },
+    {
+      icon: 'social/instagram' as const,
+      iconSize: '24px',
+      text: 'Instagram',
+      url: 'https://instagram.com/blockchain.sports',
+    },
+    {
+      icon: 'social/telega' as const,
+      iconSize: '24px',
+      text: 'Telegram',
+      url: 'https://t.me/bcsports_io',
     },
   ].filter(Boolean);
 
