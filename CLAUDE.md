@@ -27,7 +27,7 @@ pnpm svg:build-sprite       # Rebuild SVG sprite
 pnpm chakra:typegen         # Regenerate Chakra UI types
 ```
 
-**Requirements:** Node >=22.14.0, pnpm (see `package.json` `engines` / `packageManager`)
+**Requirements:** Node >=22.23.4, pnpm (see `package.json` `engines` / `packageManager`)
 
 ## Architecture
 
