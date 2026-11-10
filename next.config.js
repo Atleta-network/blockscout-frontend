@@ -31,7 +31,7 @@ const moduleExports = {
       tls: { browser: './nextjs/empty-module.js' },
     },
   },
-  // Production uses Webpack: Turbopack adds an inline bootstrap that our strict CSP blocks.
+  // Used when BUNDLE_ANALYZER=true (run: next build --webpack) or for custom webpack tooling
   webpack(config) {
     config.module.rules.push(
       {

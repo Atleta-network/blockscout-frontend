@@ -10,7 +10,11 @@ import * as svgSprite from 'ui/shared/IconSvg';
 
 const marketplaceFeature = config.features.marketplace;
 
-class MyDocument extends Document {
+interface DocumentProps {
+  readonly nonce?: string;
+}
+
+class MyDocument extends Document<DocumentProps> {
   static async getInitialProps(ctx: DocumentContext) {
     const originalRenderPage = ctx.renderPage;
     ctx.renderPage = async() => {
@@ -27,13 +31,18 @@ class MyDocument extends Document {
 
     const initialProps = await Document.getInitialProps(ctx);
 
-    return initialProps;
+    const nonce = ctx.req?.headers['x-nonce'];
+
+    return {
+      ...initialProps,
+      nonce: typeof nonce === 'string' ? nonce : undefined,
+    };
   }
 
   render() {
     return (
       <Html lang="en">
-        <Head>
+        <Head nonce={ this.props.nonce }>
           { /* FONTS */ }
           <link
             href={ config.UI.fonts.heading?.url ?? 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap' }
@@ -70,7 +79,7 @@ class MyDocument extends Document {
         </Head>
         <body>
           <Main/>
-          <NextScript/>
+          <NextScript nonce={ this.props.nonce }/>
         </body>
       </Html>
     );
